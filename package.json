@@ -1,0 +1,34 @@
+{
+  "name": "myself",
+  "version": "1.0.0",
+  "description": "My excellent Nuxt.js project",
+  "author": "bigflower",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
+  },
+  "dependencies": {
+    "@better-scroll/core": "^2.0.0-beta.6",
+    "@nuxtjs/axios": "^5.3.6",
+    "element-ui": "^2.13.0",
+    "nuxt": "^2.0.0",
+    "vue-lazyload": "^1.3.3"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^2.0.0",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.1.2",
+    "node-sass": "^4.13.1",
+    "prettier": "^1.19.1",
+    "sass-loader": "^8.0.2"
+  }
+}
