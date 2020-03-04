@@ -42,7 +42,8 @@ export default {
    */
   plugins: [
     '@/plugins/element-ui',
-    '@/plugins/vue-lazyload'
+    '@/plugins/vue-lazyload',
+    { src: '@/plugins/smoothscroll', mode: 'client' }
   ],
   /*
    ** Nuxt.js dev-modules
@@ -67,7 +68,11 @@ export default {
    ** Build configuration
    */
   build: {
-    transpile: [/^element-ui/],
+    transpile: [
+      /^element-ui/,
+      /^vue-lazyload/,
+      /^smoothscroll/
+    ],
     /*
      ** You can extend webpack config here
      */

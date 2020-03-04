@@ -6,6 +6,7 @@
           style="width: 100%; height: 100%"
           src="https://img.alicdn.com/imgextra/i4/724735359/O1CN01MycpKk1pST6PeGeHC_!!724735359.jpg"
           fit="cover"
+          lazy
         />
       </div>
     </div>

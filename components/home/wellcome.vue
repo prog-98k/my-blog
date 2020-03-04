@@ -1,7 +1,7 @@
 <template>
   <div class="wellcome">
     <div>
-      <img class="cover-logo" :src="'/images/' + logoImage" />
+      <el-image :src="'/images/' + logoImage" class="cover-logo" lazy />
       <h1 class="title">
         ><span class="flicker">_</span>
         程序员98K
@@ -48,7 +48,8 @@ export default {
       this.$nextTick(() => {
         const label = name === 'log' ? 'article-log' : 'open-source'
         const element = document.querySelector(`.${label}`)
-        element.scrollIntoView({ behavior: 'smooth' })
+        const top = element.offsetTop
+        window.scroll({ top, behavior: 'smooth' })
       })
     }
   }

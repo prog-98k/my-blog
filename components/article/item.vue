@@ -26,8 +26,9 @@
       </div>
     </div>
     <div class="cover">
-      <img
+      <el-image
         src="https://img.alicdn.com/imgextra/i4/724735359/O1CN018ueUbF1pST6S10qsy_!!724735359.jpg"
+        lazy
       />
     </div>
     <div class="content">

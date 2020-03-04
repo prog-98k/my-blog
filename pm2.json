@@ -3,6 +3,7 @@
     "name": "myblog",
     "script": "yarn",
     "args": "start",
+    "log_date_format": "YYYY-MM-DD HH:mm Z",
     "interpreter": "/bin/bash"
   }]
 }
