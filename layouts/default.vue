@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import smoothscroll from 'smoothscroll-polyfill'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import BackTop from '@/components/Backtop'
@@ -27,6 +28,9 @@ export default {
     isShadow() {
       return this.$store.state.page.isShadow
     }
+  },
+  mounted() {
+    smoothscroll.polyfill()
   }
 }
 </script>

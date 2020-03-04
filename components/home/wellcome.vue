@@ -10,18 +10,18 @@
         分享记录日常技术问题
       </h2>
       <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button">
-          <i class="iconfont iconrizhi" />
-          技术log
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button2"
-        >
-          <i class="iconfont iconmianfeikaiyuanDZ" />
-          我的开源
-        </a>
+        <nuxt-link v-slot="{ href }" to="/article">
+          <a :href="href" class="button" @click.prevent="scrollGoto('log')">
+            <i class="iconfont iconrizhi" />
+            技术log
+          </a>
+        </nuxt-link>
+        <nuxt-link v-slot="{ href }" to="/source">
+          <a :href="href" class="button2" @click.prevent="scrollGoto('source')">
+            <i class="iconfont iconmianfeikaiyuanDZ" />
+            我的开源
+          </a>
+        </nuxt-link>
       </div>
     </div>
   </div>
@@ -41,6 +41,15 @@ export default {
   computed: {
     logoImage() {
       return this.logoImageSrc[(Math.random() * this.logoImageSrc.length) | 0]
+    }
+  },
+  methods: {
+    scrollGoto(name) {
+      this.$nextTick(() => {
+        const label = name === 'log' ? 'article-log' : 'open-source'
+        const element = document.querySelector(`.${label}`)
+        element.scrollIntoView({ behavior: 'smooth' })
+      })
     }
   }
 }
