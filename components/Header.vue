@@ -11,6 +11,8 @@
       <el-input
         ref="topsearch"
         v-model="search_key"
+        :clearable="true"
+        type="search"
         class="input"
         placeholder="搜索你想要的内容……"
         @blur="searchBlur"
@@ -33,17 +35,17 @@
         </h3>
       </div>
       <el-menu
-        :default-active="menuActive"
+        :default-active="$route.path"
         class="top-menu hidden-xs-only"
         mode="horizontal"
         active-text-color="#009a61"
         text-color="#4D555D"
       >
-        <el-menu-item class="menu-item">
+        <el-menu-item class="menu-item" index="/article">
           <nuxt-link class="menu-link" to="/article">技术log</nuxt-link>
         </el-menu-item>
-        <el-menu-item class="menu-item">
-          <nuxt-link class="menu-link" to="/">我的开源</nuxt-link>
+        <el-menu-item class="menu-item" index="/article">
+          <nuxt-link class="menu-link" to="/source">我的开源</nuxt-link>
         </el-menu-item>
       </el-menu>
       <div class="menu-mini" @click="drawer = true">
@@ -57,24 +59,27 @@
     </div>
     <el-drawer
       :visible.sync="drawer"
-      :with-header="false"
+      :with-header="true"
       :modal="false"
       custom-class="sidebar"
       size="55%"
       direction="ltr"
     >
-      <el-form label-width="0">
+      <el-form>
         <el-form-item>
           <el-input
+            ref="sidebarsearch"
             v-model="sidebarSearch"
             :clearable="true"
+            type="search"
+            aria-label="搜索"
             placeholder="搜索技术Log"
             prefix-icon="el-icon-search"
           />
         </el-form-item>
       </el-form>
       <el-menu
-        :default-active="menuActive"
+        :default-active="$route.path"
         class="sidebar-menu"
         active-text-color="#009a61"
         text-color="#4D555D"
@@ -83,8 +88,8 @@
         <el-menu-item class="item" index="/article">
           <nuxt-link class="link" to="/article">技术log</nuxt-link>
         </el-menu-item>
-        <el-menu-item class="item" index="/">
-          <nuxt-link class="link" to="/">我的开源</nuxt-link>
+        <el-menu-item class="item" index="/source">
+          <nuxt-link class="link" to="/source">我的开源</nuxt-link>
         </el-menu-item>
       </el-menu>
     </el-drawer>
@@ -96,11 +101,13 @@ export default {
   data: () => ({
     search_key: '',
     sidebarSearch: '',
-    menuActive: '/',
     topsearch: false,
     drawer: false
   }),
   methods: {
+    sidebarForm() {
+      console.log('focus')
+    },
     goSearch(ev) {
       console.log('goSearch')
     },
@@ -132,6 +139,14 @@ export default {
   .sidebar {
     padding: 20px;
     outline: none;
+    background-color: #f9f9f9;
+    header {
+      opacity: 0;
+      height: 1px;
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
     .el-input {
       input {
         border-radius: 20px;

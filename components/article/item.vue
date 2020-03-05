@@ -42,7 +42,9 @@
       Next 的新特性：
     </div>
     <div class="more-link">
-      <nuxt-link to="/">
+      <nuxt-link
+        :to="{ name: 'article-details-id', params: { id: 21343433333 } }"
+      >
         <i class="iconfont iconxianshi" />
         查看全文
       </nuxt-link>
