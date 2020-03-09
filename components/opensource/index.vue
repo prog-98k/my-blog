@@ -81,7 +81,7 @@ export default {
   }
   .list-box {
     display: block;
-    margin-top: 90px;
+    margin-top: 50px;
     .horizontal-container {
       .scroll-wrapper {
         width: 100%;

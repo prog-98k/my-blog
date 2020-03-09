@@ -20,12 +20,10 @@
         <el-tag type="success">Mysql</el-tag>
       </div>
       <div class="links">
-        <nuxt-link v-slot="{ href }" to="/article">
-          <a :href="href" class="button" @click.prevent="scrollGoto('log')">
-            <i class="iconfont iconxiangmu" />
-            项目介绍
-          </a>
-        </nuxt-link>
+        <a href="javascript:void(0)" class="button" @click.prevent="scrollGoto">
+          <i class="iconfont iconxiangmu" />
+          项目介绍
+        </a>
         <a href="#" class="button2">
           <i class="iconfont iconGitHub" />
           Github
@@ -46,7 +44,7 @@ export default {
     return { content: data.data.content }
   },
   methods: {
-    scrollGoto(name) {
+    scrollGoto() {
       this.$nextTick(() => {
         const label = 'article-content'
         const element = document.querySelector(`.${label}`)
