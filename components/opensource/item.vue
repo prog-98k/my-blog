@@ -1,5 +1,9 @@
 <template>
-  <nuxt-link to="/" class="source-item">
+  <nuxt-link
+    class="source-item"
+    :to="{ name: 'source-details-id', params: { id: 21343433333 } }"
+    target="_blank"
+  >
     <div class="image">
       <div class="pic">
         <el-image

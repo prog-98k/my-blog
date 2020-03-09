@@ -11,13 +11,18 @@ export default {
       { 'http-equiv': 'X-UA-Compatible', content: 'IE=edge, chrome=1' },
       { name: 'renderer', content: 'webkit' },
       {
+        hid: 'keywords',
+        name: 'keywords',
+        content: '程序员98K,技术日志,技术log,开源分享,程序员'
+      },
+      {
         hid: 'description',
         name: 'description',
-        content: '程序员AK47'
+        content: '程序员98K | 分享记录日常开发技术问题和心得。'
       }
     ],
     link: [
-      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1660213_2mui7ez7rpx.css' },
+      { rel: 'stylesheet', href: '//at.alicdn.com/t/font_1660213_2v0ldayrf9h.css' },
       { rel: 'bookmark', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
       { rel: 'shortcut icon', type: 'image/x-icon', href: '/favicon.ico' }

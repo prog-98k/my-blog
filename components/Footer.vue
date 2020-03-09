@@ -2,13 +2,14 @@
   <div class="footer-warp">
     <div class="link-list">
       <nuxt-link to="/">交流合作</nuxt-link>
-      <nuxt-link to="/">我的开源</nuxt-link>
-      <nuxt-link to="/">GitHub</nuxt-link>
+      <nuxt-link to="/article">技术log</nuxt-link>
+      <nuxt-link to="/source">我的开源</nuxt-link>
+      <a href="https://github.com/prog-98k" target="_blank">GitHub</a>
     </div>
     <div class="copy-right">
       <p>
         Copyright &copy; 2020 程序员98K All Rights Reserved
-        &nbsp;冀ICP备&nbsp;12003892号-1
+        &nbsp;冀ICP备&nbsp;20000200号-1
       </p>
     </div>
   </div>

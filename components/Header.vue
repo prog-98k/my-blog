@@ -41,68 +41,44 @@
         active-text-color="#009a61"
         text-color="#4D555D"
       >
-        <el-menu-item class="menu-item" index="/article">
-          <nuxt-link class="menu-link" to="/article">技术log</nuxt-link>
+        <el-menu-item
+          v-for="(item, index) in menulist"
+          :key="index"
+          class="menu-item"
+          :index="item.href"
+        >
+          <nuxt-link class="menu-link" :to="item.href">
+            {{ item.name }}
+          </nuxt-link>
         </el-menu-item>
-        <el-menu-item class="menu-item" index="/article">
-          <nuxt-link class="menu-link" to="/source">我的开源</nuxt-link>
+        <el-menu-item class="menu-item" index="">
+          <a
+            class="menu-link"
+            href="https://github.com/prog-98k"
+            target="_blank"
+          >
+            Github
+          </a>
         </el-menu-item>
       </el-menu>
-      <div class="menu-mini" @click="drawer = true">
-        <i class="iconfont iconcaidan" />
-      </div>
-      <div class="user-box">
-        <div class="no-login">
-          <span>注册</span><i class="iconfont icondian" /><span>登录</span>
-        </div>
-      </div>
+      <sidebar-drawer :menulist="menulist" />
     </div>
-    <el-drawer
-      :visible.sync="drawer"
-      :with-header="true"
-      :modal="false"
-      custom-class="sidebar"
-      size="55%"
-      direction="ltr"
-    >
-      <el-form>
-        <el-form-item>
-          <el-input
-            ref="sidebarsearch"
-            v-model="sidebarSearch"
-            :clearable="true"
-            type="search"
-            aria-label="搜索"
-            placeholder="搜索技术Log"
-            prefix-icon="el-icon-search"
-          />
-        </el-form-item>
-      </el-form>
-      <el-menu
-        :default-active="$route.path"
-        class="sidebar-menu"
-        active-text-color="#009a61"
-        text-color="#4D555D"
-        @select="selectedSidebar"
-      >
-        <el-menu-item class="item" index="/article">
-          <nuxt-link class="link" to="/article">技术log</nuxt-link>
-        </el-menu-item>
-        <el-menu-item class="item" index="/source">
-          <nuxt-link class="link" to="/source">我的开源</nuxt-link>
-        </el-menu-item>
-      </el-menu>
-    </el-drawer>
   </div>
 </template>
 
 <script>
+import SidebarDrawer from '@/components/sidebar'
 export default {
+  components: {
+    SidebarDrawer
+  },
   data: () => ({
     search_key: '',
-    sidebarSearch: '',
     topsearch: false,
-    drawer: false
+    menulist: [
+      { name: '技术log', href: '/article' },
+      { name: '我的开源', href: '/source' }
+    ]
   }),
   methods: {
     sidebarForm() {
@@ -123,9 +99,6 @@ export default {
     searchTrigger() {
       this.topsearch = true
       this.$refs.topsearch.focus()
-    },
-    selectedSidebar() {
-      this.drawer = false
     }
   }
 }
@@ -136,86 +109,6 @@ export default {
   max-width: 1336px;
   margin: 0 auto;
   position: relative;
-  .sidebar {
-    padding: 20px;
-    outline: none;
-    background-color: #f9f9f9;
-    header {
-      opacity: 0;
-      height: 1px;
-      overflow: hidden;
-      margin: 0;
-      padding: 0;
-    }
-    .el-input {
-      input {
-        border-radius: 20px;
-      }
-    }
-    .sidebar-menu {
-      display: flex;
-      border: 0;
-      flex-direction: column;
-      background-color: transparent;
-      .item {
-        height: 40px;
-        line-height: 40px;
-        display: block;
-        border: 0;
-        width: 100%;
-        outline: none;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        margin: 5px 0;
-        &.submenu {
-          padding-right: 10px;
-          .el-dropdown {
-            font-size: 16px;
-            line-height: normal;
-            display: inline-flex;
-          }
-          span {
-            color: #333;
-            .arrow-icon {
-              font-size: 12px;
-            }
-            a {
-              vertical-align: baseline;
-            }
-            &:hover {
-              color: #000;
-            }
-          }
-        }
-        a.link {
-          text-decoration: none;
-          font-size: 16px;
-          display: block;
-          color: #000;
-          padding-left: 20px;
-          transition: all 0.2s;
-          border-bottom: 2px solid transparent;
-          border-radius: 12px;
-          &:hover {
-            color: #00c58e;
-            border-color: #00c58e;
-          }
-        }
-        &.is-active {
-          a {
-            color: #fff;
-            background-color: #00c58e;
-            &:hover {
-              color: #fff;
-            }
-          }
-        }
-        &:hover {
-          background: none;
-        }
-      }
-    }
-  }
   .top-search-trigger {
     position: absolute;
     top: 0;
@@ -316,6 +209,7 @@ export default {
         font-weight: normal;
         a {
           color: #000;
+          transition: color 0.2s;
           &:hover {
             color: #00c58e;
           }
@@ -364,12 +258,14 @@ export default {
           font-size: 16px;
           display: block;
           color: #000;
+          transition: all 0.2s;
           &:hover {
             color: #00c58e;
           }
         }
         &.is-active {
           a {
+            color: #009a61;
             &:hover {
               color: #009a61;
             }
@@ -377,33 +273,6 @@ export default {
         }
         &:hover {
           background: none;
-        }
-      }
-    }
-    .menu-mini {
-      height: 70px;
-      display: none;
-      align-items: center;
-      cursor: pointer;
-      flex: auto;
-      justify-content: flex-end;
-      &:hover {
-        color: #009a61;
-      }
-    }
-    .user-box {
-      display: flex;
-      color: #000;
-      font-size: 16px;
-      align-items: center;
-      padding: 0 20px;
-      height: 70px;
-      order: 2;
-      span {
-        cursor: pointer;
-        color: #000;
-        &:hover {
-          color: #009a61;
         }
       }
     }

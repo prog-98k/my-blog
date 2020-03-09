@@ -12,7 +12,7 @@
     box-shadow: 0 4px 8px 0 rgba(7, 17, 27, 0.1);
   }
   .default-header {
-    .menu-mini {
+    .sidebar-drawer {
       display: flex !important;
     }
   }
@@ -64,6 +64,21 @@
       & > .source-item {
         width: 330px !important;
       }
+    }
+  }
+  .details-box {
+    .cover-logo {
+      width: 80%;
+    }
+    .title {
+      font-size: 44px !important;
+    }
+    .content {
+      font-size: 18px !important;
+    }
+    .article-content {
+      width: 100% !important;
+      border: 0 !important;
     }
   }
 }

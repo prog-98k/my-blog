@@ -59,12 +59,11 @@ export default {
 <style lang="scss" scoped>
 .wellcome {
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  margin-top: -70px;
+  min-height: calc(100vh - 70px);
   .title {
     display: block;
     font-weight: 300;
